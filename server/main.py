@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from upload import *
+from files import *
 from waitress import serve
 from dotenv import load_dotenv
 
@@ -8,6 +9,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 app.register_blueprint(upload)
+app.register_blueprint(files)
 
 
 @app.route("/")
@@ -18,5 +20,5 @@ def index():
 
 if __name__ == "__main__":
     port = os.getenv("PORT", 3300)
-    print("Waitress Server Running on port: ", port)
+    print("Waitress Server Running on port:", port)
     serve(app=app, host="0.0.0.0", port=port)

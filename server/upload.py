@@ -28,8 +28,8 @@ def upload_file():
         res = analyze()
         return {
             "filename": filename,
-            "url": request.url_root + UPLOAD_FOLDER + "/" + filename,
             "app": res,
+            "url": f"http://localhost:5000/files/{filename}",
         }
     else:
         return {"error": "File type not allowed"}

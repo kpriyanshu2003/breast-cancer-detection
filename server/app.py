@@ -2,12 +2,14 @@ import json
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from upload import *
+from files import *
 from dotenv import load_dotenv
 
 load_dotenv()
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 app.register_blueprint(upload)
+app.register_blueprint(files)
 
 
 @app.route("/")
