@@ -1,0 +1,19 @@
+version: "3"
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:3300"
+    volumes:
+      - uploads:/app/uploads
+volumes:
+  uploads:
