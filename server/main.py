@@ -1,8 +1,8 @@
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
+from waitress import serve
 from upload import *
 from files import *
-from waitress import serve
 from dotenv import load_dotenv
 
 load_dotenv()

@@ -10,7 +10,7 @@ Tailwind CSS
 
 ### Backend :
 
-Python 3.9
+Python 3.10
 Flask
 
 ## How to run the app using Docker
@@ -18,6 +18,7 @@ Flask
 1. Install Docker
 2. Clone the repo
 3. Run `docker-compose up --build`
+   NOTE: App not working in Docker yet
 
 ## How to run the app locally
 

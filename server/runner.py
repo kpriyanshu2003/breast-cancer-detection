@@ -4,6 +4,7 @@ import numpy as np
 import cv2
 from dotenv import load_dotenv
 import os
+import uuid
 
 load_dotenv()
 
@@ -39,16 +40,15 @@ def postprocess(mask, img):
     return result
 
 
-def genregen(src, filename):
+def genregen(src):
     model_path = f"{os.getenv('MODEL_PATH')}/proposed_model_v1.h5"
     mask, img = preprocess_and_predict(src, model_path)
     final_image = postprocess(mask, img)
-    cv2.imwrite(f"{os.getenv('OUTPUT_PATH')}/{filename}", final_image)
-    return f"{os.getenv('OUTPUT_PATH')}/{filename}"
+    return final_image
 
 
-# src = "input_image.jpg"
-# predictions = genregen(src)
-# genUUid = str(uuid.uuid4())
-# cv2.imwrite(f"{os.getenv('OUTPUT_PATH')}/{genUUid}.png", predictions)
+src = "input_image.jpg"
+predictions = genregen(src)
+genUUid = str(uuid.uuid4())
+cv2.imwrite(f"{os.getenv('OUTPUT_PATH')}/{genUUid}.png", predictions)
 # img = Image.open(f"{os.getenv('OUTPUT_PATH')}/{genUUid}.png")

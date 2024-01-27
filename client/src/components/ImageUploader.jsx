@@ -33,10 +33,9 @@ function ImageUploader(props) {
     else {
       const formData = new FormData();
       formData.append("file", image.fileInput);
-      props.setImage(image.imagePreview);
       uploadImage(formData)
         .then((res) => {
-          console.log(res.data);
+          props.setImage(res.data.url);
         })
         .then(() => {
           setBtnText("Submit");
@@ -48,12 +47,13 @@ function ImageUploader(props) {
         })
         .catch((err) => {
           console.log(err);
+          setBtnText("Submit");
         });
     }
   };
 
   return (
-    <>
+    <div className="h-svh">
       <h1 className="text-4xl font-medium text-center">Upload Image</h1>
       <div className="mt-20 flex items-center justify-evenly">
         <Image
@@ -106,7 +106,7 @@ function ImageUploader(props) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

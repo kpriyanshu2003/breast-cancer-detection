@@ -1,4 +1,3 @@
-import json
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from upload import *
@@ -19,4 +18,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=os.getenv("PORT", 3300))

@@ -11,9 +11,11 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    ports:
-      - "5000:3300"
+    # ports:
+    # - "5000:3300"
     volumes:
       - uploads:/app/uploads
+      - out:/app/out
 volumes:
   uploads:
+  out:

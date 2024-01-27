@@ -2,3 +2,6 @@ flask
 flask_cors
 waitress
 python-dotenv
+opencv-python
+pillow
+tensorflow

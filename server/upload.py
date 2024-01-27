@@ -2,11 +2,14 @@ import os
 import uuid
 from flask import Blueprint, request
 from werkzeug.utils import secure_filename
-from model import analyze
+from model import *
+from dotenv import load_dotenv
+
+load_dotenv()
 
 upload = Blueprint("upload", __name__)
 
-UPLOAD_FOLDER = "uploads"
+UPLOAD_FOLDER = os.getenv("UPLOAD_PATH")
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -25,11 +28,11 @@ def upload_file():
     if file and allowed_file(file.filename):
         filename = str(uuid.uuid4()) + "." + file.filename.rsplit(".", 1)[1].lower()
         file.save(os.path.join(UPLOAD_FOLDER, secure_filename(filename)))
-        res = analyze()
+        res = genregen(f"{UPLOAD_FOLDER}/{filename}", filename)
         return {
             "filename": filename,
             "app": res,
-            "url": f"http://localhost:5000/files/{filename}",
+            "url": f'http://localhost:{os.getenv("PORT")}/files/{filename}',
         }
     else:
         return {"error": "File type not allowed"}
