@@ -18,7 +18,8 @@ Flask
 1. Install Docker
 2. Clone the repo
 3. Run `docker-compose up --build`
-   NOTE: App not working in Docker yet
+
+NOTE: App not working in Docker yet
 
 ## How to run the app locally
 
