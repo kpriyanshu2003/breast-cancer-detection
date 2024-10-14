@@ -2,7 +2,7 @@ import os
 import uuid
 from flask import Blueprint, request
 from werkzeug.utils import secure_filename
-from model import *
+from controllers.model import *
 from dotenv import load_dotenv
 
 load_dotenv()

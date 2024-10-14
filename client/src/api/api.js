@@ -1,9 +1,11 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: `http://127.0.0.1:3300/` });
+const API = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3300",
+});
 
-// tst api
+// Test API
 export const test = () => API.get("/");
 
-// upload file
+// Upload File
 export const uploadImage = (file) => API.post("/upload", file);

@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
-from upload import *
-from files import *
+from controllers.upload import *
+from controllers.files import *
 from dotenv import load_dotenv
 
 load_dotenv()

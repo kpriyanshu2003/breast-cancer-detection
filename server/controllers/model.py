@@ -9,10 +9,8 @@ load_dotenv()
 
 
 def preprocess_and_predict(file_path, model_path):
-    # load the model into model
-    model = tf.keras.models.load_model(model_path)
-    # load the image
-    img = Image.open(file_path)
+    model = tf.keras.models.load_model(model_path)  # load the model
+    img = Image.open(file_path)  # load the model into model
     img = img.resize((128, 128))
     img_array = np.array(img)[
         np.newaxis, :, :, :
@@ -46,9 +44,3 @@ def genregen(src, filename):
     cv2.imwrite(f"{os.getenv('OUTPUT_PATH')}/{filename}", final_image)
     return f"{os.getenv('OUTPUT_PATH')}/{filename}"
 
-
-# src = "input_image.jpg"
-# predictions = genregen(src)
-# genUUid = str(uuid.uuid4())
-# cv2.imwrite(f"{os.getenv('OUTPUT_PATH')}/{genUUid}.png", predictions)
-# img = Image.open(f"{os.getenv('OUTPUT_PATH')}/{genUUid}.png")
